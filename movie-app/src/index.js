@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Movie from './components/movie'
-
+import Moviepost from './components/moviepost'
 
 
 ReactDOM.render(
-  <Movie/>,
+  <Moviepost/>,
   document.getElementById('root')
 );
 

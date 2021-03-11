@@ -1,41 +1,36 @@
 import React from 'react'; 
 import Movie from './movie'
+import ReviewForm from './review-form'
 
 
-export default class Mociepost extends React.Component {
+export default class Moviepost extends React.Component {
     constructor(props) {
         super(props); 
-        this.state  = {
-            name: props.name, 
-            release : props.release,
-            review: props.review
+        this.state  = [{
+            name:"The Shining", 
+            release:"5/13/1980",
+            review: {
+    
+            }
+        }, {
+            name:"Tropic Thunder", 
+            release:"5/13/1980",
+        }, 
+        {
+            name:"Tropic Thunder", 
+            release:"5/13/1980",
         }
-
-        // let movies = [{
-        //     name:"this shining",
-        //     release: '5/20/1980', 
-        //     review:[]
-        // }, 
-        // {
-        //     name:"tropic Thunder", 
-        //     release: "8/13/2008", 
-        //     review:[]
-        // }
-        // ]
+    
+    ]
     }
 
 
         render() {
-            let movies = [];
-            if (this.state.name) {
-                for(let movie of this.state.name ) {
-                    movie.push(<Movie {...name}/>)
-                }
-            }
-
+            const moviecard  = this.state.map(movie => <Movie {...movie} key={movie.name}/>)
             return (
                 <div>
-                    <Movie/>
+                    <ReviewForm/>
+                    {moviecard}
                 </div>
             )
         }
