@@ -5,24 +5,50 @@ export default class ReviewForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            name: '', 
             rating: '',
             review: '',
             movie:'', 
         }
+        this.submitForm = this.submitForm.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
+
+    resetForm() {
+        this.setState({
+            rating: '',
+            review: '',
+            movie:'', 
+        });
+    }
+
+    submitForm() {
+        this.props.onSubmit(this.state);
+        this.resetForm();
+    }
+
+      handleInputChange(event) {
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        this.setState({
+            [name]: value
+        });
+        console.log(this.state)
+    }
+
+
     render(){
         return(
-            <form className="container">
+            <div className="container">
                 <div className="form-group col-md-4">
                     <label for="inputstate">Movie Name</label>
-                    <select id="inputstate" className="form-control">
+                    <select name="movie" id="inputstate" className="form-control" onChange={this.handleInputChange}>
                         <option selected>Choose...</option>
                         <option>The Shining</option>
                         <option>Tropic Thunder</option>
                     </select>
                     <label for="StarRating">Star rating</label>
-                    <select id="StarRating" className="form-control">
+                    <select name="rating" id="StarRating" className="form-control" onChange={this.handleInputChange}>
                         <option selected>Rating...</option>
                             <option>1</option>
                             <option>2</option>
@@ -30,13 +56,13 @@ export default class ReviewForm extends React.Component {
                             <option>4</option>
                             <option>5</option>
                     </select>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Example textarea</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div className="form-group">
+                            <label for="exampleFormControlTextarea1">Review</label>
+                            <textarea name="review" className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={this.handleInputChange}></textarea>
                         </div>
-                        <button className="btn btn-danger">Enter New Employee</button>
+                        <button className="btn btn-danger" onClick={this.submitForm}>Submit Review</button>
                 </div>
-            </form>
+            </div>
         );
     }
 }
