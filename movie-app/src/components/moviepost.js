@@ -6,59 +6,51 @@ import ReviewForm from './review-form'
 export default class Moviepost extends React.Component {
     constructor(props) {
         super(props); 
-        this.state  = [{
+        this.state  = {movies:[{
             name:"The Shining", 
             release:"5/13/1980",
             reviews: [{
                 rating: '5',
-                review: 'dfg',
-                movie:'test', }, 
+                review: 'this is a amazing, one of my favorite movies and books!',
+                movie:'The Shining', }, 
                 {
-                    rating: '7',
-                    review: 'dfg',
-                    movie:'test', }]
+                rating: '5',
+                review: 'great movie',
+                movie:'The Shining', }]
         }, {
             name:"Tropic Thunder", 
-            release:"5/13/1980",
+            release:"8/13/2008",
             reviews: [{
-                rating: '6',
-                review: 'dfg',
-                movie:'test', }],
+                rating: '5',
+                review: 'amazing movie from when i was a kid, soooo funny.',
+                movie:'Tropic Thunder', }],
+        }]
         }
-    ]
     this.addNewReview = this.addNewReview.bind(this)
     }
 
+    //function that add new review
     addNewReview(review) {
-        console.log(review.movie);
-        for(let i of this.state) {
+        //this is a fake state that get the current state
+        let fakeState = this.state.movies
+        //loops through the state and find the making object with the same name 
+        for(let i of fakeState) {
             if(i.name === review.movie) {
-                console.log(i.reviews)
-                const allReviews = i.reviews.slice(); 
-                //this is the issue below. its when pushing to the state it brakes the map function.
-                this.setState({reviews: [...allReviews,review]}) }
+                //pushes the review into the mataching object reviews
+                i.reviews.push(review)
+                //set the state
+                this.setState({movies: [...fakeState]}) 
+                }
             }
         }
 
-        // this.state.map(()=> { 
-        //     if(this.state.name === review.movie) {
-        //     const allReviews = this.state.reviews.slice(); 
-        //     this.setState({reviews: [...allReviews,review]}) }
-        // })
-
-    //     const reviews = this.state.slice();
-    //     console.log(this.state)
-    //     // just generate a simple id for additions...
-    //     // this.setState({ employees: [...employees, employee]});
-    //     this.setState({ reviews: [...reviews, review]});
-    // }
-
         render() {
-            const moviecard  = this.state.map(movie => <Movie {...movie} key={movie.name}/>)
-            return (
+            //maps through the movies and makes the cards
+            const moviecard  = this.state.movies.map(movie => <Movie {...movie} key={movie.name}/>);
+            return ( 
                 <div>
+                    {moviecard} <br></br>
                     <ReviewForm onSubmit={this.addNewReview} />
-                    {moviecard}
                 </div>
             )
         }

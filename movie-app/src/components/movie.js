@@ -1,16 +1,16 @@
 import React from 'react'; 
 
-// {this.props.reviews.[0].rating} 
 export default class Movie extends React.Component {
     render(){
-        console.log(this.props.reviews)
-        const reviewCard  = this.props.reviews.map(review => <div> {review.rating} {review.review}</div>)
+        //maps through the reviews and sets up the cards.
+        const reviewCard  = this.props.reviews.map(review => <div className="card"> <b>Star Rating:</b> {review.rating} <br></br> <b>Review:</b>{review.review}</div>)
+        //making the movie cards and the review cards.
         return(
             <div className="container">
-            <div className="card w-75">
+            <div className="card">
             <div className="card-header bg-success text-white">
-            {this.props.name} relaese date : {this.props.release}
-            </div>
+           <b>{this.props.name}</b> relaese date : {this.props.release}
+            </div> 
             {reviewCard} 
             <div className="card-footer">
             </div>

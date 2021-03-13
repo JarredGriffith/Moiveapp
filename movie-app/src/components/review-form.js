@@ -12,7 +12,7 @@ export default class ReviewForm extends React.Component {
         this.submitForm = this.submitForm.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-
+    //clears the state
     resetForm() {
         this.setState({
             rating: '',
@@ -20,12 +20,13 @@ export default class ReviewForm extends React.Component {
             movie:'', 
         });
     }
-
+    //onSubmit is a prop passed down from the parent. 
     submitForm() {
         this.props.onSubmit(this.state);
         this.resetForm();
+        
     }
-
+    //updates the sate as when changed in the form.
       handleInputChange(event) {
         const target = event.target;
         const name = target.name;
@@ -36,20 +37,20 @@ export default class ReviewForm extends React.Component {
         console.log(this.state)
     }
 
-
+ 
     render(){
         return(
             <div className="container">
-                <div className="form-group col-md-4">
-                    <label for="inputstate">Movie Name</label>
+                <div className="form-group col-md">
+                    <label for="inputstate"><b>Movie Name</b></label>
                     <select name="movie" id="inputstate" className="form-control" onChange={this.handleInputChange}>
-                        <option selected>Choose...</option>
+                        <option defaultValue>Choose...</option>
                         <option>The Shining</option>
                         <option>Tropic Thunder</option>
                     </select>
                     <label for="StarRating">Star rating</label>
                     <select name="rating" id="StarRating" className="form-control" onChange={this.handleInputChange}>
-                        <option selected>Rating...</option>
+                        <option defaultValue>Rating...</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
