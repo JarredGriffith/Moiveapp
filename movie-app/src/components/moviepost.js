@@ -9,6 +9,7 @@ export default class Moviepost extends React.Component {
         this.state  = {movies:[{
             name:"The Shining", 
             release:"5/13/1980",
+            overview: "Jack Torrance (Jack Nicholson) becomes winter caretaker at the isolated Overlook Hotel in Colorado, hoping to cure his writer's block. He settles in along with his wife, Wendy (Shelley Duvall), and his son, Danny (Danny Lloyd), who is plagued by psychic premonitions. As Jack's writing goes nowhere and Danny's visions become more disturbing, Jack discovers the hotel's dark secrets and begins to unravel into a homicidal maniac hell-bent on terrorizing his family.",
             reviews: [{
                 rating: '5',
                 review: 'this is a amazing, one of my favorite movies and books!',
@@ -20,6 +21,7 @@ export default class Moviepost extends React.Component {
         }, {
             name:"Tropic Thunder", 
             release:"8/13/2008",
+            overview:"While shooting a war film, the director attempts to liven up proceedings by dropping the principle actors into the middle of a real jungle, claiming he is going to capture their performance with hidden cameras. The hapless group including drug-addled comedy star Jeff Portnoy and po-faced method man Kirk Lazarus are completely unaware when a series of unfortunate events leads them into the middle of a real war zone.",
             reviews: [{
                 rating: '5',
                 review: 'amazing movie from when i was a kid, soooo funny.',
